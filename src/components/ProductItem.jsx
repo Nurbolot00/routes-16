@@ -21,6 +21,7 @@ const ProductItem = ({img,title,price}) => {
 export default ProductItem;
 
 const ProductCard = styled.div`
+   margin-top: 1rem;
     width: 300px;
     height: 25rem;
     background-color: white;
