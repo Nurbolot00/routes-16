@@ -5,12 +5,11 @@ import Button from "../components/UI/Button";
 
 const Details = ({ products }) => {
   const { id } = useParams();
-  console.log(typeof +id);
+
   const navigate = useNavigate();
 
   const [item, setItem] = useState({});
-  console.log(item);
-  console.log(products);
+
 
   const goBackToProductsHandler = () => {
     navigate(-1);
@@ -23,15 +22,19 @@ const Details = ({ products }) => {
 
   return (
     <Container>
-      <div><img src={item.url} alt={item.title} /></div>
+        <ItemWrapper>
+      <ImageContainer>
+        <img src={item.url} alt={item.title} />
+        </ImageContainer>
 
-      <div>
-        <h2>{item.title}</h2>
+      <InfoContainer>
+        <h2>Name: {item.title}</h2>
         <p>
-          <b>Price:</b>${item.price}
+          <b>Price:</b>  ${item.price}
         </p>
-        {/* <p>{item}</p> */}
-      </div>
+        <p> <b>Description: </b>{item.description}</p>
+      </InfoContainer>
+      </ItemWrapper>
       <Button onClick={goBackToProductsHandler}>Go Back</Button>
     </Container>
   );
@@ -44,3 +47,21 @@ const Container = styled.div`
   padding: 20px 40px;
   background-color: #c3cfd9;
 `;
+
+const ItemWrapper = styled.div`
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    border-radius: 10px;
+`
+const ImageContainer = styled.div`
+    width: 300px;
+    img{
+        width: 100%;
+    }
+`
+
+const InfoContainer = styled.div`
+    width: 70%;
+`
